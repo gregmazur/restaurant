@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/css/materialize.min.css">
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.min.js"></script>
+    <title>Restaurants</title>
+    <link rel="stylesheet" href="app.css">
+    <script src="app.js"></script>
+</head>
+<body ng-app="mapComponentsApp">
+
+
+<div class="google-map" rest-Maps="" ></div>
+
+<script type="text/html" id="restaurantsControlTemplate">
+    <section class="col s4 map-control">
+        <header>
+            <h3>Restaurants locations</h3>
+            <small>Double click todo title or marker to edit.</small>
+
+        </header>
+        <div class="collection" ng-show="todos.filtered().length">
+
+            <a class="collection-item" ng-repeat="todo in todos.filtered()" ng-class="{completed: todo.completed}"
+               ng-click="controls.openInfoWindowByRestId(todo.id)"
+               ng-dblclick="controls.editTodoById(todo.id)">
+                {{todo.title}}
+            </a>
+        </div>
+        <footer>
+            <hr/>
+            <a class="waves-effect waves-light btn" ng-click="controls.newRestaurant()" ng-hide="controls.editTodo">New
+                Restaurant</a>
+        </footer>
+    </section>
+</script>
+
+<script type="text/html" id="infoWindowTemplate">
+    <div class="google-map">
+        <h3>{{infow.data.title}}</h3>
+
+        <p ng-show="infow.data.desc">{{infow.data.desc}}</p>
+
+        <div style="clear: both;"></div>
+    </div>
+</script>
+
+<script type="text/html" id="editRestaurantsControlTemplate">
+    <div class="addNewR" ng-show="controls.editTodo" ng-controller="EditTodoCtrl">
+        <form name="editTodoForm" class="col 2" ng-submit="submitTodo()">
+            <fieldset>
+                <label for="title">Title:</label>
+                <input id="title" class="input-field col s2" type="text" ng-model="editTodo.title" ng-maxlength="30"
+                       required>
+                <label for="description">Description:</label>
+                <input id="description" class="input-field col s2" type="text" ng-model="editTodo.desc">
+                <label for="latitude">Latitude:</label>
+                <input id="latitude" class="input-field col s2" type="text" ng-model="editTodo.lat">
+                <label for="longitude">Longitude:</label>
+                <input id="longitude" class="input-field col s2" type="text" ng-model="editTodo.lng">
+
+                <div ng-show="editTodo.id !== -1">
+                    <label for="completed">Completed:</label>
+                    <input id="completed" type="checkbox" ng-model="editTodo.comp">
+                </div>
+                <div class="row">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">
+                        <i class="material-icons right">{{editTodo.saveMsg}}</i>
+                    </button>
+                    <button class="btn waves-effect waves-light" ng-click="resetCloseTodoForm()" type="submit"
+                            name="action">
+                        <i class="material-icons right">{{editTodo.cancelMsg}}</i>
+                    </button>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+</script>
+
+
+</body>
+</html>
