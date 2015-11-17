@@ -6,9 +6,11 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "angular": "~1.4.0",
+    "angular": "1.4.x",
+    "angular-mocks": "1.4.x",
     "angular-material": "",
-    "angular-route": "~1.4.7",
-    "materialize":""
+    "materialize":"",
+    "angular-route": "1.4.x",
+    "jquery": "2.x"
   }
 }

@@ -6,6 +6,6 @@
     </div>
     <div class="tag-suggestions" ng-show="suggestions && focus">
         <span class="title">Suggestions:</span>
-        <span class="tag" ng-repeat="tag in suggestions | limitTo:4" ng-mousedown="add(tag.id, tag.name)">{{tag.name}}</span>
+        <span class="tag" ng-repeat="tag in suggestions | limitTo:10" ng-mousedown="add(tag.id, tag.name)">{{tag.name}}</span>
     </div>
 </div>

@@ -1,0 +1,68 @@
+{
+  "status": "success",
+  "data": [
+    {
+      "id": 1,
+      "name": "first",
+      "desc": "sfgbvkzb,jbvkjfbklzvfbkj fdlsnvnjsdv",
+      "latitude": 46.480880,
+      "longitude": 30.730688
+    },
+    {
+      "id": 1,
+      "name": "sec",
+      "desc": "sfgbvkzb,jbvkjfbklzvfbkj fdlsnvnjsdv",
+      "latitude": 46.450880,
+      "longitude": 30.790688
+    },
+    {
+      "id": 1,
+      "name": "th",
+      "desc": "sfgbvkzb,jbvkjfbklzvfbkj fdlsnvnjsdv",
+      "latitude": 46.480880,
+      "longitude": 30.130688
+    },
+    {
+      "id": 1,
+      "name": "fourth",
+      "desc": "sfgbvkzb,jbvkjfbklzvfbkj fdlsnvnjsdv",
+      "latitude": 46.180880,
+      "longitude": 30.730688
+    },
+    {
+      "id": 1,
+      "name": "five",
+      "desc": "sfgbvkzb,jbvkjfbklzvfbkj fdlsnvnjsdv",
+      "latitude": 47.480880,
+      "longitude": 30.730688
+    },
+    {
+      "id": 1,
+      "name": "six",
+      "desc": "sfgbvkzb,jbvkjfbklzvfbkj fdlsnvnjsdv",
+      "latitude": 46.480880,
+      "longitude": 30.173688
+    },
+    {
+      "id": 1,
+      "name": "sev",
+      "desc": "sfgbvkzb,jbvkjfbklzvfbkj fdlsnvnjsdv",
+      "latitude": 46.480880,
+      "longitude": 31.730688
+    },
+    {
+      "id": 1,
+      "name": "eight",
+      "desc": "sfgbvkzb,jbvkjfbklzvfbkj fdlsnvnjsdv",
+      "latitude": 46.980880,
+      "longitude": 30.930688
+    },
+    {
+      "id": 1,
+      "name": "nine",
+      "desc": "sfgbvkzb,jbvkjfbklzvfbkj fdlsnvnjsdv",
+      "latitude": 46.180880,
+      "longitude": 30.130688
+    }
+  ]
+}
