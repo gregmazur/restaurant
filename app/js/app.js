@@ -2,19 +2,16 @@
 
 /* App Module */
 
-angular.module('app', [
+var app =angular.module('app', [
     'ngRoute',
     'tagCtrl'
 ])
 
-.config(['$routeProvider',
+app.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
         when('/', {
             templateUrl: 'views/welcome.html'
-        }).
-        when('/map', {
-            templateUrl: 'views/map.html'
         }).
         otherwise({
             redirectTo: '/'

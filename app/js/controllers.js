@@ -3,7 +3,7 @@
 /**
  * Created by greg on 15.11.15.
  */
-var controllers = angular.module('tagCtrl', ['ngTagEditor'])
+var controllers = angular.module('tagCtrl', ['ngTagEditor', 'uiGmapgoogle-maps'])
 
 controllers.controller('search', ['$scope', '$http', function ($scope, $http) {
     $http.get('test/first_suggestion.json').success(function (data) {
@@ -11,4 +11,3 @@ controllers.controller('search', ['$scope', '$http', function ($scope, $http) {
     });
     $scope.quantity = 10;
 }]);
-controllers.controller

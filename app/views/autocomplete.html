@@ -1,11 +1,27 @@
-<div class="tag-editor" ng-class="{active:focus}" ng-init="focus = false" ng-click="setFocus = true">
-    <div class="tag-draft">
-        <span class="tag" ng-repeat="tag in tags">{{tag.name}}<span class="remove" ng-click="remove($index)">x</span></span>
-        <input type="hidden" name="tags" value="{{tags | getCol:options.output}}"/>
-        <input type="text" class="tag-input" placeholder="{{options.placeholder}}" ng-focus="focus = true" ng-blur="focus = false" focus-me="setFocus" ng-model="search"/>
+<div>
+    <div id="index-banner" class="container" ng-hide="shutWelcome"
+         ng-style="{'background-image':'url(pic/background1.jpg)'}">
+        <div class="container">
+            <h1 class="header center teal-text text-lighten-2 text-lighten-4">РЕСТОРАННЫЙ КРИТИК</h1>
+        </div>
     </div>
-    <div class="tag-suggestions" ng-show="suggestions && focus">
-        <span class="title">Suggestions:</span>
-        <span class="tag" ng-repeat="tag in suggestions | limitTo:10" ng-mousedown="add(tag.id, tag.name)">{{tag.name}}</span>
+    <div class="tag-editor" ng-class="{active:focus}" ng-init="focus = false" ng-click="setFocus = true">
+        <div class="tag-draft">
+        <span class="tag" ng-repeat="tag in tags">{{tag.name}}<span class="remove"
+                                                                    ng-click="remove($index)">x</span></span>
+            <input type="hidden" name="tags" value="{{tags | getCol:options.output}}"/>
+            <input type="text" class="tag-input" placeholder="{{options.placeholder}}" ng-focus="focus = true"
+                   ng-blur="focus = false" focus-me="setFocus" ng-model="search"/>
+        </div>
+        <div class="tag-suggestions" ng-show="suggestions && focus">
+            <span class="title">Suggestions:</span>
+        <span class="tag" ng-repeat="tag in suggestions | limitTo:10"
+              ng-mousedown="add(tag.id, tag.name)">{{tag.name}}</span>
+        </div>
+    </div>
+    <div id="map" class="container" ng-show="showMap">
+        <div ng-controller="MapsController">
+            <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+        </div>
     </div>
 </div>

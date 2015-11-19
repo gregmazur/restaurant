@@ -11,6 +11,8 @@
     "angular-material": "",
     "materialize":"",
     "angular-route": "1.4.x",
-    "jquery": "2.x"
+    "jquery": "2.x",
+    "angular-google-maps": "",
+    "lodash": ""
   }
 }
