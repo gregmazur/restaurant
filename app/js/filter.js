@@ -8,6 +8,8 @@ var filter = editor.filter('getCol', function () {
             }).join(',');
     }
 });
+var locations = [];
+var renderMap;
 filter.directive('focusMe', ['$timeout', '$parse', function ($timeout, $parse) {
     return {
         link: function (scope, element, attrs) {
@@ -29,9 +31,9 @@ filter.directive('tagEditor', function () {
     return {
         restrict: 'AE',
         /* require: 'ngModel',*/
-        scope: {
-            tags: '=ngModel'
-        },
+        //scope: {
+        //    tags: '=ngModel',
+        //},
         replace: true,
         templateUrl: 'views/autocomplete.html',
         controller: ['$scope', '$attrs', '$element', '$http', '$filter', function ($scope, $attrs, $element, $http, $filter) {
@@ -49,11 +51,20 @@ filter.directive('tagEditor', function () {
                     console.log(data);
                 });
             });
-            $scope.add = function (id, name) {
+            $scope.add = function (id, name, longitude, latitude) {
                 setTimeout(function () {
                     $scope.$apply(function () {
                         $scope.tags.push({'name': name});
-                        $scope.search = '';
+                        var names = $scope.tags.map(function(item) {
+                            return item['name'];
+                        });
+                        //example of query
+                        console.log("//q=" + names.join('|'));
+                        //for test
+                        locations.push({'name': name, 'longitude':longitude, 'latitude':latitude});
+                        console.log(locations);
+                        $scope.createMarkers();
+
                     });
                 }, 200)
 
@@ -88,14 +99,12 @@ filter.directive('tagEditor', function () {
                 e.stopPropagation();
                 scope.shutWelcome = true;
                 scope.showMap = true;
-                console.log(scope.tags);
-                //add get request with scope.tags.join()
-
             });
         }
     }
 });
-filter.controller('MapsController', function($scope, $http) {
+editor.controller('MapsController', function ($scope, $http) {
+
     $scope.map = {
         center: {
             latitude: 46.4781688,
@@ -103,32 +112,26 @@ filter.controller('MapsController', function($scope, $http) {
         },
         zoom: 13
     };
-    $scope.locations = [];
-    // add test locations for example, wiil need to change to our url
-    $http.get('test/locations.json').success(function (data) {
-        $scope.locations = data;
-    });
+    if (locations[0] !== null) {
 
-    // add markers for each location on the loaded tour
-    $scope.markers = [];
-    // function to create an individual marker
-    $scope.createMarker = function(location) {
-        var marker = {
-            idKey: location.number,
-            coords: {
-                latitude: location.latitude,
-                longitude: location.longitude
+        // add markers for each location on the loaded tour
+        var markers = [];
+        // function to create an individual marker
+        $scope.createMarker = function (location) {
+            var marker = new google.maps.Marker({
+                coords: {'lat': location.latitude, 'lng': location.longitude},
+                map: scope.map,
+                title: location.name
+            });
+            return marker;
+        };
+        // function to fill array of markers
+        $scope.createMarkers = function () {
+            for (var i = 0; i < locations.length; i++) {
+                var marker = $scope.createMarker(locations[i]);
+                $scope.markers.push(marker);
             }
         };
-        return marker;
-    };
-    // function to fill array of markers
-    $scope.createMarkers = function() {
-        for (var i = 0; i < $scope.locations.length; i++) {
-            var marker = $scope.createMarker($scope.locations[i]);
-            $scope.markers.push(marker);
-        }
-    };
-    // call upon controller initialization
-    $scope.createMarkers();
+        renderMap = $scope.createMarkers;
+    }
 });

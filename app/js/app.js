@@ -7,13 +7,13 @@ var app =angular.module('app', [
     'tagCtrl'
 ])
 
-app.config(['$routeProvider',
-    function($routeProvider) {
-        $routeProvider.
-        when('/', {
-            templateUrl: 'views/welcome.html'
-        }).
-        otherwise({
-            redirectTo: '/'
-        });
-    }]);
+//app.config(['$routeProvider',
+//    function($routeProvider) {
+//        $routeProvider.
+//        when('/', {
+//            templateUrl: 'views/welcome.html'
+//        }).
+//        otherwise({
+//            redirectTo: '/'
+//        });
+//    }]);
