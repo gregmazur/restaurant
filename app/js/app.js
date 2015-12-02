@@ -2,10 +2,8 @@
 
 /* App Module */
 
-var app =angular.module('app', [
-    'ngRoute',
-    'tagCtrl'
-])
+var app =angular.module('app', ['controllers'
+]);
 
 //app.config(['$routeProvider',
 //    function($routeProvider) {

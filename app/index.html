@@ -1,46 +1,84 @@
 <!DOCTYPE html>
-<html ng-app="app" lang="en">
+<html lang="en" ng-app="app">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-    <title>Реально критик ресторанный</title>
-
-    <!-- CSS  -->
-    <link href="app.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
     <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.css">
     <link rel="stylesheet" href="app.css">
-    <!-- JS -->
+
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/geolib/dist/geolib.js"></script>
+    <script src='https://maps.googleapis.com/maps/api/js'></script>
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
-    <script src="js/filter.js"></script>
-    <script src='https://maps.googleapis.com/maps/api/js'></script>
-    <script src='bower_components/lodash/lodash.js'></script>
-    <script src='bower_components/angular-google-maps/dist/angular-google-maps.js'></script>
-    <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.min.js"></script>
-
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-<nav class="brown" role="navigation">
-    <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo">Logo</a>
-        <ul class="right hide-on-med-and-down">
-            <li><a href="#">Navbar Link</a></li>
-        </ul>
-        <a href="#" class="brand-logo">Logo</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#">MENU</a></li>
-        </ul>
+<script type="text/html" id="divs">
+    <div class="overlay" ng-controller="searchLstCtrl">
+        <nav class="brown lighten-1" role="navigation" id="nav">
+            <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#">Navbar Link</a></li>
+                </ul>
+
+                <ul id="nav-mobile" class="side-nav" style="left: -250px;">
+                    <li><a href="#">Navbar Link</a></li>
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+        <div class="search-list fixed col s3" id="list">
+            <ul class="collection">
+                <li class="collection-item avatar" ng-repeat="location in locations.locationsList | filter: searcher"
+                    ng-style="{'backgroung-color': locations.selectedLocation == location ? 'lightgrey':''}"
+                    ng-click="chooseLocation(location)">
+                    <md-card>
+                        <i class="material-icons circle">{{location.rate}}</i>
+                        <md-card-title>
+                            <md-card-title-text>
+                                <span class="md-headline">{{location.name}}</span>
+                            </md-card-title-text>
+                        </md-card-title>
+                        <md-card-content>
+                            <p>
+                                {{location.desc}}
+                            </p>
+                        </md-card-content>
+                        <p class="material-icons">{{calculateDistance(location)/1000 | number: 2}} km</p>
+                    </md-card>
+
+                </li>
+
+            </ul>
+        </div>
+        <div id="search" class="row">
+            <div class="col s10">
+                <form class="search-input">
+                    <input id="searchInput" class="input-field" type="text" ng-model="search"
+                           placeholder="Enter what you need">
+                </form>
+            </div>
+            <div class="col s2">
+                <a class='dropdown-button btn-large' data-activates='dropdown1'>Drop Me!</a>
+
+                <!-- Dropdown Structure -->
+                <ul id='dropdown1' class='dropdown-content'>
+                    <li><a href="#!">one</a></li>
+                    <li><a href="#!">two</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#!">three</a></li>
+                </ul>
+            </div>
+
+        </div>
     </div>
-</nav>
-<div class="container center row">
-    <div class="container col s12">
-        <form ng-controller="search" class="raw col s12">
-            <tag-editor ng-model="tags" output="name" fetch="test/locations.json"></tag-editor>
-        </form>
-    </div>
-</div>
+</script>
+<div id="map" map=""></div>
+
 </body>
 </html>

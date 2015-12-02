@@ -13,6 +13,10 @@
     "angular-route": "1.4.x",
     "jquery": "2.x",
     "angular-google-maps": "",
-    "lodash": ""
+    "lodash": "",
+    "angular-resource": "",
+    "geolib": "",
+    "angular-animate": "",
+    "angular-aria":""
   }
 }
