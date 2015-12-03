@@ -14,7 +14,6 @@ controllers.directive('map', function ($compile, locationService, $timeout) {
         var mapOptions,
             latitude,
             longitude,
-            divs,
             locations,
             map;
 
@@ -71,9 +70,6 @@ controllers.directive('map', function ($compile, locationService, $timeout) {
                     marker.setMap(map);
                 }
             }
-            divs = document.getElementById('divs').innerHTML.trim();
-            divs = $compile(divs)(scope);
-            map.controls[google.maps.ControlPosition.TOP_LEFT].push(divs[0]);
             locationService.map = map;
             createAllMarkers();
         }, 250);
