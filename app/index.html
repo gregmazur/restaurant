@@ -20,13 +20,9 @@
 <body>
 <div id="map" map=""></div>
 <div class="overlay" ng-controller="searchLstCtrl">
-    <nav class="brown lighten-1" role="navigation">
+    <nav class="brown lighten-1" role="navigation"  >
         <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#">Navbar Link</a></li>
-            </ul>
-
-            <ul id="nav-mobile" class="side-nav" style="left: -250px;">
                 <li><a href="#">Navbar Link</a></li>
             </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
@@ -59,21 +55,14 @@
     <div id="search" class="row">
         <div class="col s10">
             <form>
-                <input id="search-input" class="input-field" type="text" ng-model="search"
-                       placeholder="Enter what you need">
+                <div class="input-field">
+                    <input id="search-input" class="input-field" type="search" ng-model="search"
+                           placeholder="Enter what you need">
+
+                </div>
             </form>
         </div>
-        <div class="col s2">
-            <a class='dropdown-button btn-large' data-activates='dropdown1'>Drop Me!</a>
 
-            <!-- Dropdown Structure -->
-            <ul id='dropdown1' class='dropdown-content'>
-                <li><a href="#!">one</a></li>
-                <li><a href="#!">two</a></li>
-                <li class="divider"></li>
-                <li><a href="#!">three</a></li>
-            </ul>
-        </div>
 
     </div>
 </div>

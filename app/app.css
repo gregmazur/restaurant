@@ -5,7 +5,7 @@ html, body {
 }
 nav {
     top:0;
-    height: 10%;
+    height: 9%;
     width: 100%;
     position: fixed;
 }
@@ -16,7 +16,7 @@ width: 100%;
 }
 
 #search {
-    top: 10%;
+    top: 9%;
     padding-left: 23%;
     position: fixed;
     width: 100%;
@@ -30,7 +30,7 @@ width: 100%;
 
 
 .search-list {
-    top: 10%;
+    top: 9%;
     position: fixed;
     height: 90%;
     overflow: scroll;
@@ -40,7 +40,6 @@ width: 100%;
 .overlay {
     position: absolute;
     width: 100%;
-    height: 100%;
 }
 
 .wrapper {
