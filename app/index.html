@@ -16,16 +16,16 @@
     <script src="js/controllers.js"></script>
     <meta charset="UTF-8">
     <title>Title</title>
+    <meta name="viewport" content="width=device-width">
 </head>
 <body>
 <div id="map" map=""></div>
 <div class="overlay" ng-controller="searchLstCtrl">
-    <nav class="brown lighten-1" role="navigation"  >
+    <nav class="brown lighten-1" role="navigation">
         <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#">Navbar Link</a></li>
+                <li><a href="#">Тут можно вставить "О нас" ссыль на лэндинг пэйдж</a></li>
             </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
     </nav>
     <div class="search-list fixed col s3" id="list">
@@ -37,15 +37,15 @@
                     <i class="material-icons circle">{{location.rate}}</i>
                     <md-card-title>
                         <md-card-title-text>
-                            <span class="md-headline">{{location.name}}</span>
+                            <h5><span class="md-headline">{{location.name}}</span></h5>
                         </md-card-title-text>
                     </md-card-title>
                     <md-card-content>
-                        <p>
+                        <p><span>Description:</span>
                             {{location.desc}}
                         </p>
                     </md-card-content>
-                    <p class="material-icons">{{calculateDistance(location)/1000 | number: 2}} km</p>
+                    <p><span>Distance:</span>  {{calculateDistance(location)/1000 | number: 2}} km</p>
                 </md-card>
 
             </li>
@@ -53,19 +53,15 @@
         </ul>
     </div>
     <div id="search" class="row">
-        <div class="col s10">
-            <form>
-                <div class="input-field">
-                    <input id="search-input" class="input-field" type="search" ng-model="search"
-                           placeholder="Enter what you need">
-
-                </div>
-            </form>
-        </div>
-
-
+        <form>
+            <div class="input-field">
+                <input id="search-input" class="input-field" type="search" ng-model="search"
+                       placeholder="Enter what you need">
+            </div>
+        </form>
     </div>
 </div>
+
 
 
 </body>

@@ -39,7 +39,7 @@ controllers.directive('map', function ($compile, locationService, $timeout) {
             locationService.currentLocation.longitude = longitude;
 
             mapOptions = {
-                zoom: 8,
+                zoom: 10,
                 mapTypeControl: true,
                 mapTypeControlOptions: {
                     position: google.maps.ControlPosition.BOTTOM_CENTER
@@ -52,11 +52,23 @@ controllers.directive('map', function ($compile, locationService, $timeout) {
             };
             map = new google.maps.Map(elem[0], mapOptions);
 
-            function createMarker(location) {
+            function createMarker(longitude, latitude, icon) {
+                if(icon != null){
+                    var marker = new google.maps.Marker({
+                        position: {
+                            lat: latitude,
+                            lng: longitude
+                        },
+                        map: map,
+                        title: location.name,
+                        icon: icon
+                    });
+                    return marker;
+                }
                 var marker = new google.maps.Marker({
                     position: {
-                        lat: location.latitude,
-                        lng: location.longitude
+                        lat: latitude,
+                        lng: longitude
                     },
                     map: map,
                     title: location.name
@@ -66,11 +78,25 @@ controllers.directive('map', function ($compile, locationService, $timeout) {
 
             function createAllMarkers() {
                 for (var i = 0; i < locations.length; i++) {
-                    var marker = createMarker(locations[i]);
+                    var marker = createMarker(locations[i].longitude,locations[i].latitude);
                     marker.setMap(map);
                 }
             }
             locationService.map = map;
+            function addMyLocation (){
+                var image = {
+                    url: 'pic/location.png',
+                    // This marker is 20 pixels wide by 32 pixels high.
+                    size: new google.maps.Size(20, 32),
+                    // The origin for this image is (0, 0).
+                    origin: new google.maps.Point(0, 0),
+                    // The anchor for this image is the base of the flagpole at (0, 32).
+                    anchor: new google.maps.Point(0, 32)
+                };
+                var marker = createMarker(longitude,latitude, image);
+                marker.setMap(map);
+            }
+            addMyLocation();
             createAllMarkers();
         }, 250);
 

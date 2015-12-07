@@ -1,23 +1,12 @@
 html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+
 }
 nav {
-    top:0;
-    height: 9%;
-    width: 100%;
-    position: fixed;
-}
 
-#map {
-height: 100%;
-width: 100%;
 }
 
 #search {
-    top: 9%;
-    padding-left: 23%;
+    top: 8%;
     position: fixed;
     width: 100%;
 }
@@ -30,11 +19,11 @@ width: 100%;
 
 
 .search-list {
-    top: 9%;
+    top: 18%;
     position: fixed;
     height: 90%;
     overflow: scroll;
-    width: 23%;
+
 }
 
 .overlay {
@@ -46,6 +35,67 @@ width: 100%;
     position: relative;
 }
 
+@media only screen and (min-width: 480px) {
+    html, body {
+        height: 97%;
+        margin: 0;
+        padding: 0;
+        display: list-item;
+    }
+    nav {
+        top:0;
+        height: 9%;
+        width: 100%;
+        position: fixed;
+        display: block;
+    }
+
+    #map {
+        height: 100%;
+        width: 100%;
+        display: list-item;
+    }
+
+    span{
+        font-style: italic;
+    }
+
+    #search {
+        top: 9%;
+        padding-left: 27%;
+        position: fixed;
+        width: 100%;
+        display: list-item;
+    }
+
+    #search-input {
+        color: black;
+        font-family: Roboto;
+        font-size: larger;
+        display: list-item;
+    }
+
+
+    .search-list {
+        top: 9%;
+        position: fixed;
+        height: 89%;
+        overflow: scroll;
+        width: 27%;
+        display: list-item;
+    }
+
+    .overlay {
+        position: absolute;
+        width: 100%;
+        display: list-item;
+    }
+
+    .wrapper {
+        position: relative;
+        display: list-item;
+    }
+}
 
 
 
