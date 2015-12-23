@@ -22,32 +22,40 @@
 <div id="map" map=""></div>
 <div class="overlay" ng-controller="searchLstCtrl">
     <nav class="brown lighten-1" role="navigation">
-        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+        <div class="nav-wrapper container">
+            <img id="logo-container" id="logo" src="pic/logo.png" class="brand-logo"/>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#">Тут можно вставить "О нас" ссыль на лэндинг пэйдж</a></li>
+                <li><a href="http://restaurant.uniqso.pp.ua">About us</a></li>
             </ul>
         </div>
     </nav>
     <div class="search-list fixed col s3" id="list">
         <ul class="collection">
-            <li class="collection-item avatar" ng-repeat="location in locations.locationsList | filter: searcher"
-                ng-style="{'backgroung-color': locations.selectedLocation == location ? 'lightgrey':''}"
+            <ul class="collection-item" ng-repeat="location in locations.locationsList | filter: searcher"
                 ng-click="chooseLocation(location)">
                 <md-card>
-                    <i class="material-icons circle">{{location.rate}}</i>
                     <md-card-title>
-                        <md-card-title-text>
-                            <h5><span class="md-headline">{{location.name}}</span></h5>
-                        </md-card-title-text>
+                        <div class="row">
+                            <img class="col s3 material-icons circle image" src="pic/nophoto.png"
+                                 ng-show="location.avatar == null">
+                            <img class="col s3 material-icons circle image" ng-show="location.avatar != null"
+                                 src={{location.avatar}}>
+
+                            <md-card-title-text class="col">
+                                <h5><span class="md-headline">{{location.name}}</span></h5>
+                            </md-card-title-text>
+                        </div>
                     </md-card-title>
                     <md-card-content>
                         <p><span>Description:</span>
                             {{location.desc}}
                         </p>
+                        <p><span>About:</span>
+                            {{location.review}}
+                        </p>
                     </md-card-content>
-                    <p><span>Distance:</span>  {{calculateDistance(location)/1000 | number: 2}} km</p>
+                    <p><span>Distance:</span> {{calculateDistance(location)/1000 | number: 2}} km</p>
                 </md-card>
-
             </li>
 
         </ul>
@@ -61,7 +69,6 @@
         </form>
     </div>
 </div>
-
 
 
 </body>

@@ -3,7 +3,7 @@
 /**
  * Created by greg on 15.11.15.
  */
-var controllers = angular.module('controllers', ['ngResource','ngMaterial', 'ngAnimate', 'ngAria']);
+var controllers = angular.module('controllers', ['ngResource', 'ngMaterial', 'ngAnimate', 'ngAria']);
 
 controllers.factory('location', function ($resource) {
     return $resource("test/locations.json")
@@ -39,7 +39,7 @@ controllers.directive('map', function ($compile, locationService, $timeout) {
             locationService.currentLocation.longitude = longitude;
 
             mapOptions = {
-                zoom: 10,
+                zoom: 12,
                 mapTypeControl: true,
                 mapTypeControlOptions: {
                     position: google.maps.ControlPosition.BOTTOM_CENTER
@@ -53,7 +53,7 @@ controllers.directive('map', function ($compile, locationService, $timeout) {
             map = new google.maps.Map(elem[0], mapOptions);
 
             function createMarker(longitude, latitude, icon) {
-                if(icon != null){
+                if (icon != null) {
                     var marker = new google.maps.Marker({
                         position: {
                             lat: latitude,
@@ -82,8 +82,9 @@ controllers.directive('map', function ($compile, locationService, $timeout) {
                     marker.setMap(map);
                 }
             }
+
             locationService.map = map;
-            function addMyLocation (){
+            function addMyLocation() {
                 var image = {
                     url: 'pic/location.png',
                     // This marker is 20 pixels wide by 32 pixels high.
@@ -93,7 +94,7 @@ controllers.directive('map', function ($compile, locationService, $timeout) {
                     // The anchor for this image is the base of the flagpole at (0, 32).
                     anchor: new google.maps.Point(0, 32)
                 };
-                var marker = createMarker(longitude,latitude, image);
+                var marker = createMarker(longitude, latitude, image);
                 marker.setMap(map);
             }
             addMyLocation();
@@ -129,7 +130,6 @@ controllers.controller("searchLstCtrl", function ($scope, locationService) {
             lng: location.longitude
         });
     };
-
     $scope.calculateDistance = function (destination) {
         return geolib.getDistance(locationService.currentLocation, destination)
     };

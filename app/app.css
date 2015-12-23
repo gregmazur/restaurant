@@ -1,6 +1,7 @@
 html, body {
-
+    overflow:hidden;
 }
+
 nav {
 
 }
@@ -17,8 +18,8 @@ nav {
     font-size: larger;
 }
 
-
 .search-list {
+    overflow:hidden;
     top: 18%;
     position: fixed;
     height: 90%;
@@ -35,6 +36,14 @@ nav {
     position: relative;
 }
 
+.image {
+    width: 5%;
+    height: 5%;
+}
+#logo{
+    background: black;
+}
+
 @media only screen and (min-width: 480px) {
     html, body {
         height: 97%;
@@ -42,8 +51,9 @@ nav {
         padding: 0;
         display: list-item;
     }
+
     nav {
-        top:0;
+        top: 0;
         height: 9%;
         width: 100%;
         position: fixed;
@@ -56,12 +66,13 @@ nav {
         display: list-item;
     }
 
-    span{
+    span {
         font-style: italic;
+        font-weight: bold;
     }
 
     #search {
-        top: 9%;
+        top: 8%;
         padding-left: 27%;
         position: fixed;
         width: 100%;
@@ -74,7 +85,6 @@ nav {
         font-size: larger;
         display: list-item;
     }
-
 
     .search-list {
         top: 9%;
